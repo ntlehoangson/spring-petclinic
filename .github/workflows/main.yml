@@ -79,7 +79,7 @@ jobs:
           '
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
             docker login --username  ${{ secrets.DOCKER_USERNAME }}  --password-stdin ${{ secrets.DOCKER_TOKEN }} &&
-            cd /${{ env.PATH_PROJECT }}
+            cd /project
             pwd
             docker compose pull  &&
             docker compose up -d --build
