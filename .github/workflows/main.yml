@@ -73,10 +73,6 @@ jobs:
         run: |
           echo "${SSH_PRIVATE_KEY}" > ssh_key
           chmod -R 600 ssh_key
-#          ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
-#           mkdir -p project
-#           scp docker-compose.yml $USERNAME@$HOST:/project
-#          '
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
             docker login --username  ${{ secrets.DOCKER_USERNAME }}  --password-stdin ${{ secrets.DOCKER_PASSWORD }} &&
             cd /project
