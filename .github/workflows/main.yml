@@ -63,7 +63,7 @@ jobs:
           port: 22
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "docker-compose.yml"
-          target: '${{ env.PATH_PROJECT }}'
+          target: 'project'
 
       - name: Deploy to server
         env:
