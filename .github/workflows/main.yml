@@ -80,6 +80,7 @@ jobs:
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
            echo ${{ secrets.DOCKER_TOKEN }} | docker login --username  ${{ secrets.DOCKER_USERNAME }}  --password-stdin &&
             cd /project
-            docker-compose pull -d &&
-            docker-compose up -d --build
+            pwd
+            docker compose pull -d &&
+            docker compose up -d --build
           '
