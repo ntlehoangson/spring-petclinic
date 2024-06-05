@@ -4,6 +4,7 @@ services:
     build:
       context: .
       target: development
+    image: ${USER_DOCKERHUB}/server
     ports:
       - 8080:8080
 #      - 8005:8005
