@@ -76,6 +76,8 @@ jobs:
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
           
             mkdir -p project1
+           cd project1 
+          pwd
           '
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
            echo ${{ secrets.DOCKER_TOKEN }} | docker login --username  ${{ secrets.DOCKER_USERNAME }}  --password-stdin &&
