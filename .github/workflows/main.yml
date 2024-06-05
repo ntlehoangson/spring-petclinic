@@ -75,7 +75,7 @@ jobs:
           chmod -R 600 ssh_key
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
             docker login --username  ${{ secrets.DOCKER_USERNAME }}  --password-stdin ${{ secrets.DOCKER_PASSWORD }} &&
-            cd project
+            cd project &&
             docker compose pull  &&
             docker compose up -d --build
           '
