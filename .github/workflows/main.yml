@@ -63,6 +63,7 @@ jobs:
         run: |
           echo "${SSH_PRIVATE_KEY}" > ssh_key
           chmod -R 600 ssh_key
+          echo $USERNAME
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
           mkdir -p /home/$USERNAME/project 
           '
