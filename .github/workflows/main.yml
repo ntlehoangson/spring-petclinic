@@ -64,8 +64,8 @@ jobs:
           echo "${SSH_PRIVATE_KEY}" > ssh_key
           chmod -R 600 ssh_key
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
+          chmod -R 600 /project
           mkdir -p /project &&
-          chmod 600 /project
           '
           scp -i ssh_key -o StrictHostKeyChecking=no -r docker-compose.yml $USERNAME@$HOST:/project
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
