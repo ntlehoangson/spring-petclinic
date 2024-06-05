@@ -63,7 +63,7 @@ jobs:
           port: 22
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "docker-compose.yml"
-          target: project
+          target: 'project'
 
       - name: Deploy to server
         env:
@@ -73,10 +73,10 @@ jobs:
         run: |
           echo "${SSH_PRIVATE_KEY}" > ssh_key
           chmod -R 600 ssh_key
-#          ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
-#
-#            mkdir -p project
-#          '
+          ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
+          
+            mkdir -p project 
+          '
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
            echo ${{ secrets.DOCKER_TOKEN }} | docker login --username  ${{ secrets.DOCKER_USERNAME }}  --password-stdin &&
             cd /project
