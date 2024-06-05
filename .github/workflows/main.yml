@@ -65,7 +65,7 @@ jobs:
           chmod -R 600 ssh_key
           echo $USERNAME
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
-          mkdir -p /home/$USERNAME/project 
+          mkdir -p /home/${{ secrets.SERVER_HOST }}/project 
           '
           scp -i ssh_key -o StrictHostKeyChecking=no -r docker-compose.yml $USERNAME@$HOST:/project
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
