@@ -55,6 +55,16 @@ jobs:
       #            docker-compose pull
       #            docker-compose up -d
       #            '
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          port: 22
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "docker-compose.yml"
+          target: project
+
       - name: Deploy to server
         env:
           HOST: ${{ secrets.SERVER_HOST }}
@@ -67,7 +77,6 @@ jobs:
           
             mkdir -p project 
           '
-          scp -i ssh_key -o StrictHostKeyChecking=no -r docker-compose.yml $USERNAME@$HOST:/project
           ssh -i ssh_key -o StrictHostKeyChecking=no $USERNAME@$HOST '
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} &&
             cd /project
